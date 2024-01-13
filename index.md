@@ -1,5 +1,5 @@
-Here you can say lots of fun things about your site.
+TechShorts, the blog that will not live or die.
 
-Maybe say a some things about yourself.
+Started on blogger, moved to WordPress, then back to blogger and now on to github!
 
-Or maybe what you plan to blog about.
+I may update this with some pithy comments about my goals, but then again I may not.
