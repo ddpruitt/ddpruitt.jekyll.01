@@ -1,0 +1,16 @@
+---
+date: '2010-12-25T04:24:00.000-08:00'
+description: ''
+published: true
+slug: 2010-12-parsing-delicious-export-file
+tags:
+- .Net
+- http://schemas.google.com/blogger/2008/kind#post
+- legacy-blogger
+time_to_read: 5
+title: Parsing Delicious Export File
+---
+
+*This was originally posted on blogger [here](https://techshorts.blogspot.com/2010/12/parsing-delicious-export-file.html)*.
+
+With all the brew ha ha going on about how Delicious is going to be dumped I made a backup of my <a href="http://www.delicious.com/ddpruitt">Delicious</a> bookmarks.  While I was at it I created a quick utility to parse the export file so I could play with the links and tags.<br /><br />Key to parsing the file was the <a href="http://htmlagilitypack.codeplex.com/">HTML Agility Pack</a>.  The Bookmark class:<br /><br />[csharp]<br />public class Bookmark<br />{<br />	public string Title { get; set; }<br />	public string Href { get; set; }<br />	public DateTime AddDate { get; set; }<br />	public string AddDateEpoch { get; set; }<br />	public List&lt;string&gt; Tags { get; set; }<br />	public bool IsPrivate { get; set; }<br />	public Bookmark()<br />	{<br />		Tags = new List&lt;string&gt;();<br />	}<br /><br />	public static Bookmark New(HtmlNode node)<br />	{<br />		if (node == null) throw new ArgumentNullException(&quot;node&quot;);<br /><br />		var bookmark = new Bookmark<br />						   {<br />							   Title = node.InnerText ?? string.Empty,<br />							   Href = node.Attributes[&quot;href&quot;].Value ?? string.Empty,<br />							   AddDate = FromUnixTime(Convert.ToDouble(node.Attributes[&quot;ADD_DATE&quot;].Value ?? &quot;0&quot;)),<br />							   IsPrivate = (node.Attributes[&quot;ADD_DATE&quot;].Value ?? &quot;0&quot;).Equals(&quot;1&quot;)<br />						   };<br /><br />		bookmark.Tags.AddRange(GetTags(node.Attributes[&quot;tags&quot;].Value ?? string.Empty));<br /><br />		return bookmark;<br />	}<br /><br />	protected static DateTime FromUnixTime(double unixTime)<br />	{<br />		DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);<br />		return epoch.AddSeconds(unixTime);<br />	}<br /><br />	protected static string[] GetTags(string tagList)<br />	{<br />		if(string.IsNullOrEmpty(tagList)) return new string[]{};<br /><br />		return tagList.Trim().Split(',');<br />	}<br /><br />}<br />[/csharp]<br /><br />The tricky part was really just handling the Epoch time for the AddDate field.<br /><br />Using the class:<br />[csharp]<br />var doc = new HtmlDocument();<br />doc.Load(@&quot;Data\delicious.htm&quot;);<br /><br />var bookmarks = doc.DocumentNode.SelectNodes(&quot;//a[@href]&quot;).Select(Bookmark.New);<br /><br />var tags = bookmarks.SelectMany(b =&gt; b.Tags).Distinct().OrderBy(t =&gt; t);<br /><br />var output = new StringBuilder();<br /><br />foreach (var tag in tags)<br />{<br />	output.AppendLine(tag);<br />	string localTag = tag;<br />	var taggedBookmarks = bookmarks.Where(b =&gt; b.Tags.Contains(localTag)).OrderBy(b =&gt; b.AddDate);<br />	foreach (var taggedBookmark in taggedBookmarks)<br />	{<br />		output.AppendFormat(&quot;\t{0}&quot;, taggedBookmark.Title).AppendLine();<br />	}<br />}<br /><br />File.WriteAllText(&quot;TaggedBookmarks.txt&quot;, output.ToString());<br />Console.WriteLine(output.ToString());<br /><br />[/csharp]

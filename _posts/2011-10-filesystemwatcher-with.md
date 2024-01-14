@@ -1,0 +1,16 @@
+---
+date: '2011-10-31T02:48:00.000-07:00'
+description: ''
+published: true
+slug: 2011-10-filesystemwatcher-with
+tags:
+- .Net
+- http://schemas.google.com/blogger/2008/kind#post
+- legacy-blogger
+time_to_read: 5
+title: FileSystemWatcher With the BlockingCollection
+---
+
+*This was originally posted on blogger [here](https://techshorts.blogspot.com/2011/10/filesystemwatcher-with.html)*.
+
+While working with the FileSystemWatcher I found that if too many files were created the built in buffer will overflowed and files will be skipped.  After much research I found out about the <a href="http://en.wikipedia.org/wiki/Producer-consumer_problem" target="_blank" title="Producer-Consumer Problem">Producer-Consumer Problem</a>.  Then I found that .Net 4 has the BlockingCollection which helps solve the issue.  But how to use it with the FileSystemWatcher?<br /><br />On StackOverflow I found <a href="http://stackoverflow.com/questions/7533067/making-plinq-and-blockingcollection-work-together" target="_blank" title="Making PLINQ and BlockingCollection work together">Making PLINQ and BlockingCollection work together</a>.  I'm not so interested in the PLINQ issue but this is a great example of using The BlockingCollection with FileSystemWatcher.<br /><br />[csharp]<br />using System;<br />using System.Collections.Concurrent;<br />using System.Collections.Generic;<br />using System.IO;<br />using System.Linq;<br />using System.Threading;<br /><br />namespace ConsoleApplication4<br />{<br />    public class Program<br />    {<br />        private const string Folder = &quot;C:\\Temp\\InputData&quot;;<br /><br />        static void Main(string[] args) {<br /><br />            var cts = new CancellationTokenSource();<br />            foreach (var obj in Input(cts.Token))<br />                Console.WriteLine(obj);<br />        }<br /><br />        public static IEnumerable&lt;object&gt; Input(CancellationToken cancellationToken) {<br />            var fileList = new BlockingCollection&lt;string&gt;();<br /><br />            var watcher = new FileSystemWatcher(Folder);<br />            watcher.Created += (source, e) =&gt; {<br />                if (cancellationToken.IsCancellationRequested)<br />                    watcher.EnableRaisingEvents = false;<br />                else if (Path.GetFileName(e.FullPath) == &quot;STOP&quot;) {<br />                    watcher.EnableRaisingEvents = false;<br />                    fileList.CompleteAdding();<br />                    File.Delete(e.FullPath);<br />                } else<br />                    fileList.Add(e.FullPath);<br />            };<br />            watcher.EnableRaisingEvents = true;<br /><br />            return from file in<br />                       fileList<br />                            .GetConsumingEnumerable(cancellationToken)<br />                            .AsParallel()<br />                            .WithMergeOptions(ParallelMergeOptions.NotBuffered)<br />                            .WithCancellation(cancellationToken)<br />                            .WithDegreeOfParallelism(5)<br />                   let obj = CreateMyObject(file)<br />                   select obj;<br />        }<br /><br />        private static object CreateMyObject(string file) {<br />            return file;<br />        }<br />    }<br />}<br />[/csharp]
