@@ -13,9 +13,9 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2004-01-01-period-matirx-twisting.md",
+                "file": "2006-12-30-i-am-iron-man.md",
                 "mode": "preview",
-                "source": false
+                "source": true
               }
             }
           }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2004-01-01-period-matirx-twisting.md",
+                "file": "2006-12-30-i-am-iron-man.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2004-01-01-period-matirx-twisting.md",
+                "file": "2006-12-30-i-am-iron-man.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2004-01-01-period-matirx-twisting.md"
+                "file": "2006-12-30-i-am-iron-man.md"
               }
             }
           }
@@ -147,5 +147,32 @@
     }
   },
   "active": "a2675a5ce6775921",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "2006-12-28-windows-xp-running-in-kvm-on-fedora-core-6.md",
+    "2006-12-30-i-am-iron-man.md",
+    "2007-01-11-no-wait-i-am-dr-doom.md",
+    "2012-03-26-c-spirograph-point-generators.md",
+    "2008-01-05-need-tape.md",
+    "2006-10-22-windows-live-writer.md",
+    "2006-10-17-sql-moment-of-clairity.md",
+    "2006-10-07-ralf-39-s-sudelb-cher-net-naked-see-these-hitherto-unpublished-pictures-of-the-net-framework-architecture.md",
+    "2006-09-30-cisco-vpn-sucks.md",
+    "2006-09-10-5-tb-server.md",
+    "2006-09-08-g-dingtv-viewing-linux-in-a-whole-new-way.md",
+    "2006-09-07-outlook-rules-blackberry-sucks.md",
+    "2006-09-01-aggragator-sites.md",
+    "2006-08-31-building-a-build-server-with-ccnet.md",
+    "2006-08-28-hanselminutes-not-franklinminutes.md",
+    "2006-08-26-coding-horror-source-control-anything-but-sourcesafe.md",
+    "2006-08-21-programming-with-interfaces.md",
+    "2006-08-19-youtube-the-future-of-tv.md",
+    "2006-08-18-blue-man-group-rocks.md",
+    "2006-08-17-gallery-upgrade.md",
+    "2006-08-16-moving-blogs-aspnet-vs-php-and-wordpress.md",
+    "2006-08-16-genghis-darren.md",
+    "2006-08-12-vmware-server-good-but.md",
+    "2006-08-09-reading-net-configuration-files.md",
+    "2006-08-04-wasting-space-on-the-web.md",
+    "2006-06-10-resharper-vs-coderush.md"
+  ]
 }
