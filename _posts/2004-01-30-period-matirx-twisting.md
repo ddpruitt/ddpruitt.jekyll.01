@@ -8,7 +8,7 @@ tags:
 - SQL Origami
 ---
 
-The Period Matrix table, Pd\_Matrix, is used in calculating accounting period formulas. These formulas include current month, quarter or years activity or balance. These formulas can also be created using standard SQL functions but not all functions are common between SQL Server and MS Access. The Period Matrix has the advantage in that it can be used in any DBMS and it also can be used in table pivoting and folding.
+The Period Matrix table, Pd_Matrix, is used in calculating accounting period formulas. These formulas include current month, quarter or years activity or balance. These formulas can also be created using standard SQL functions but not all functions are common between SQL Server and MS Access. The Period Matrix has the advantage in that it can be used in any DBMS and it also can be used in table pivoting and folding.
 
 The table listed below is for use with the Activity table and not the Balance table. Either a separate matrix table will have to be created or an additional field would have to be added for calculating account formulas with the Balance table.
 
@@ -35,22 +35,18 @@ The table listed below is for use with the Activity table and not the Balance ta
 |semiannual|2|SA2|0|0|0|0|0|0|1|1|1|1|1|1|
 
 
-### Pd\_Type
+## Pd_Type
 
 The Period Type is used to indicate the type of formula being used. The types listed are:
 
 *   Month: The given months activity
-    
 *   Quarter: The given quarters activity
-    
 *   Semiannual: The given half-year activity
-    
 *   Annual: The entire years activity
-    
 *   Other types that could be created include a months or quarter ending balance.
     
 
-### Pd\_ID and PD\_Name
+### Pd_ID and PD_Name
 
 The Period ID and Name are used to identify a given time frame:
 
@@ -59,52 +55,50 @@ The Period ID and Name are used to identify a given time frame:
 *   Semiannual: The semiannual number (1 or2) and name (SA1 and SA2)
 *   Annual: The year number (1) or name (YR)
 
-### pd\_1 thru pd\_12
+### pd_1 thru pd_12
 
 The values for period 1 through 12 can only be 1 or 0. These fields are multiplied with the Activity table month fields to create the necessary formulas.
 
-Creating Formulas
------------------
+## Creating Formulas
 
 To create a formula using the Period Matrix and the Activity table you would create a select statement where in the period fields in the Activity table were multiplied to the period fields in the Matrix table then add them all together:
 
 ```sql
-( Activity.Jan \* Pd\_Matrix.pd\_1 + Activity.Feb \* Pd\_Matrix.pd\_2  
-Activity.Mar \* Pd\_Matrix.pd\_3 + Activity.Apr \* Pd\_Matrix.pd\_4  
-Activity.May \* Pd\_Matrix.pd\_5 + Activity.Jun \* Pd\_Matrix.pd\_6  
-Activity.Jul \* Pd\_Matrix.pd\_7 + Activity.Aug \* Pd\_Matrix.pd\_8  
-Activity.Sep \* Pd\_Matrix.pd\_9 + Activity.Oct \* Pd\_Matrix.pd\_10  
-Activity.Nov \* Pd\_Matrix.pd\_11 + Activity.Dec \* Pd\_Matrix.pd\_12)
+( Activity.Jan * Pd_Matrix.pd_1 + Activity.Feb * Pd_Matrix.pd_2  
+Activity.Mar * Pd_Matrix.pd_3 + Activity.Apr * Pd_Matrix.pd_4  
+Activity.May * Pd_Matrix.pd_5 + Activity.Jun * Pd_Matrix.pd_6  
+Activity.Jul * Pd_Matrix.pd_7 + Activity.Aug * Pd_Matrix.pd_8  
+Activity.Sep * Pd_Matrix.pd_9 + Activity.Oct * Pd_Matrix.pd_10  
+Activity.Nov * Pd_Matrix.pd_11 + Activity.Dec * Pd_Matrix.pd_12)
 ```
 
-In the WHERE clause of the select statement you would set the Period Type (Pd\_Type) and Period Name (Pd\_Name) of the Matrix table to the name of the formula. For example, if you wanted to show the monthly activity for January you would create the following select statement:
+In the WHERE clause of the select statement you would set the Period Type (Pd_Type) and Period Name (Pd_Name) of the Matrix table to the name of the formula. For example, if you wanted to show the monthly activity for January you would create the following select statement:
 
 ```sql
 SELECT  
       Activity.AcctID  
      , Activity.DeptID  
      , Activity.Class  
-     , Pd\_Matrix.Pd\_Name  
+     , Pd_Matrix.Pd_Name  
      , Activity.Year  
-     , ( Activity.Jan \* Pd\_Matrix.pd\_1 + Activity.Feb \* Pd\_Matrix.pd\_2  
-         + Activity.Mar \* Pd\_Matrix.pd\_3 + Activity.Apr \* Pd\_Matrix.pd\_4  
-         + Activity.May \* Pd\_Matrix.pd\_5 + Activity.Jun \* Pd\_Matrix.pd\_6  
-         + Activity.Jul \* Pd\_Matrix.pd\_7 + Activity.Aug \* Pd\_Matrix.pd\_8  
-         + Activity.Sep \* Pd\_Matrix.pd\_9 + Activity.Oct \* Pd\_Matrix.pd\_10  
-         + Activity.Nov \* Pd\_Matrix.pd\_11 + Activity.Dec \* Pd\_Matrix.pd\_12  
+     , ( Activity.Jan * Pd_Matrix.pd_1 + Activity.Feb * Pd_Matrix.pd_2  
+         + Activity.Mar * Pd_Matrix.pd_3 + Activity.Apr * Pd_Matrix.pd_4  
+         + Activity.May * Pd_Matrix.pd_5 + Activity.Jun * Pd_Matrix.pd_6  
+         + Activity.Jul * Pd_Matrix.pd_7 + Activity.Aug * Pd_Matrix.pd_8  
+         + Activity.Sep * Pd_Matrix.pd_9 + Activity.Oct * Pd_Matrix.pd_10  
+         + Activity.Nov * Pd_Matrix.pd_11 + Activity.Dec * Pd_Matrix.pd_12  
          ) As Amount  
   
-FROM Activity, Pd\_Matrix  
+FROM Activity, Pd_Matrix  
   
 WHERE  
-         (Pd\_Type = 'month')  
-     And (Pd\_Matrix.Pd\_Name = 'JAN')
+         (Pd_Type = 'month')  
+     And (Pd_Matrix.Pd_Name = 'JAN')
 ```
 
-This SQL statement could be changed to a parameterized stored procedure with variables for Pd\_Type and Pd\_Name. This would allow you to return a recordset for any of the given formulas.
+This SQL statement could be changed to a parameterized stored procedure with variables for Pd_Type and Pd_Name. This would allow you to return a recordset for any of the given formulas.
 
-Table Folding
--------------
+## Table Folding
 
 The Period Matrix can also be  
 used in table folding, where the columns of the original table are converted to rows. This is accomplished by creating a Cartesian product between the original table, in our case the Activity table, and the Period Matrix table.
@@ -119,31 +113,30 @@ SELECT
        Activity.AcctID  
      , Activity.DeptID  
      , Activity.Class  
-     , Pd\_Matrix.Pd\_Name  
+     , Pd_Matrix.Pd_Name  
      , Activity.Year  
-     ,    (Activity.Jan \* Pd\_Matrix.pd\_1 + Activity.Feb \* Pd\_Matrix.pd\_2  
-         + Activity.Mar \* Pd\_Matrix.pd\_3 + Activity.Apr \* Pd\_Matrix.pd\_4  
-         + Activity.May \* Pd\_Matrix.pd\_5 + Activity.Jun \* Pd\_Matrix.pd\_6  
-         + Activity.Jul \* Pd\_Matrix.pd\_7 + Activity.Aug \* Pd\_Matrix.pd\_8  
-         + Activity.Sep \* Pd\_Matrix.pd\_9 + Activity.Oct \* Pd\_Matrix.pd\_10  
-         + Activity.Nov \* Pd\_Matrix.pd\_11 + Activity.Dec \* Pd\_Matrix.pd\_12  
+     ,    (Activity.Jan * Pd_Matrix.pd_1 + Activity.Feb * Pd_Matrix.pd_2  
+         + Activity.Mar * Pd_Matrix.pd_3 + Activity.Apr * Pd_Matrix.pd_4  
+         + Activity.May * Pd_Matrix.pd_5 + Activity.Jun * Pd_Matrix.pd_6  
+         + Activity.Jul * Pd_Matrix.pd_7 + Activity.Aug * Pd_Matrix.pd_8  
+         + Activity.Sep * Pd_Matrix.pd_9 + Activity.Oct * Pd_Matrix.pd_10  
+         + Activity.Nov * Pd_Matrix.pd_11 + Activity.Dec * Pd_Matrix.pd_12  
          ) As Amount  
   
-FROM Activity, Pd\_Matrix  
+FROM Activity, Pd_Matrix  
    
-WHERE Pd\_Type = 'month'
+WHERE Pd_Type = 'month'
 ```
 
-Note that this is identical to the SQL used to show the activity for just one month used previously, with the only exception being in the WHERE clause. Instead of indicating which month (Pd\_Name) to show, the SQL was allowed to return all the available months.
+Note that this is identical to the SQL used to show the activity for just one month used previously, with the only exception being in the WHERE clause. Instead of indicating which month (Pd_Name) to show, the SQL was allowed to return all the available months.
 
-This statement works for the same reasons the previous SQL statement worked. When the Pd\_Name is JAN then pd\_1 equals one while the rest of the pd\_2 through pd\_12 equals zero. When the multiplications are carried out all the results are all zero except for January's, which is equal to the January activity. When the addition is carried out therefore only the January amount is returned.
+This statement works for the same reasons the previous SQL statement worked. When the Pd_Name is JAN then pd_1 equals one while the rest of the pd_2 through pd_12 equals zero. When the multiplications are carried out all the results are all zero except for January's, which is equal to the January activity. When the addition is carried out therefore only the January amount is returned.
 
-Also, since there is no join between the two tables the result set will have twelve times the number of rows that the Activity table actually has. For each row in the Activity table there will be twelve rows generated in the result because there are twelve possible rows for the Pd\_Type of 'month'. If instead of choosing 'month' we had chosen 'quarter' for the Period Type then the results set would have four times the number of rows in the Activity table.
+Also, since there is no join between the two tables the result set will have twelve times the number of rows that the Activity table actually has. For each row in the Activity table there will be twelve rows generated in the result because there are twelve possible rows for the Pd_Type of 'month'. If instead of choosing 'month' we had chosen 'quarter' for the Period Type then the results set would have four times the number of rows in the Activity table.
 
 This method of table folding is fast and very simple to create and maintain. The most common way table folding is done though is by manually creating the final table then creating an append or update query for each column to fold. In the case of our example we would have had to create and execute thirteen queries in order to obtain the same results.
 
-Table Folding and Pivoting Using Formulas
------------------------------------------
+## Table Folding and Pivoting Using Formulas
 
 Where as table folding is deals with turning columns into rows, table pivoting is turning rows into columns.
 
@@ -156,34 +149,34 @@ SELECT
 
        Activity.AcctID  
      , Activity.DeptID  
-     , Pd\_Matrix.Pd\_Name  
+     , Pd_Matrix.Pd_Name  
      , Activity.Year  
      ,Sum( IIF(Activity.Class = "Actual",  
-         (Activity.Jan \* Pd\_Matrix.pd\_1 + Activity.Feb \* Pd\_Matrix.pd\_2  
-         + Activity.Mar \* Pd\_Matrix.pd\_3 + Activity.Apr \* Pd\_Matrix.pd\_4  
-         + Activity.May \* Pd\_Matrix.pd\_5 + Activity.Jun \* Pd\_Matrix.pd\_6  
-         + Activity.Jul \* Pd\_Matrix.pd\_7 + Activity.Aug \* Pd\_Matrix.pd\_8  
-         + Activity.Sep \* Pd\_Matrix.pd\_9 + Activity.Oct \* Pd\_Matrix.pd\_10  
-         + Activity.Nov \* Pd\_Matrix.pd\_11 + Activity.Dec \* Pd\_Matrix.pd\_12  
+         (Activity.Jan * Pd_Matrix.pd_1 + Activity.Feb * Pd_Matrix.pd_2  
+         + Activity.Mar * Pd_Matrix.pd_3 + Activity.Apr * Pd_Matrix.pd_4  
+         + Activity.May * Pd_Matrix.pd_5 + Activity.Jun * Pd_Matrix.pd_6  
+         + Activity.Jul * Pd_Matrix.pd_7 + Activity.Aug * Pd_Matrix.pd_8  
+         + Activity.Sep * Pd_Matrix.pd_9 + Activity.Oct * Pd_Matrix.pd_10  
+         + Activity.Nov * Pd_Matrix.pd_11 + Activity.Dec * Pd_Matrix.pd_12  
          ), 0)) As Actual  
   
      ,Sum( IIF(Activity.Class = "Budget",  
-         (Activity.Jan \* Pd\_Matrix.pd\_1 + Activity.Feb \* Pd\_Matrix.pd\_2  
-         + Activity.Mar \* Pd\_Matrix.pd\_3 + Activity.Apr \* Pd\_Matrix.pd\_4  
-         + Activity.May \* Pd\_Matrix.pd\_5 + Activity.Jun \* Pd\_Matrix.pd\_6  
-         + Activity.Jul \* Pd\_Matrix.pd\_7 + Activity.Aug \* Pd\_Matrix.pd\_8  
-         + Activity.Sep \* Pd\_Matrix.pd\_9 + Activity.Oct \* Pd\_Matrix.pd\_10  
-         + Activity.Nov \* Pd\_Matrix.pd\_11 + Activity.Dec \* Pd\_Matrix.pd\_12  
+         (Activity.Jan * Pd_Matrix.pd_1 + Activity.Feb * Pd_Matrix.pd_2  
+         + Activity.Mar * Pd_Matrix.pd_3 + Activity.Apr * Pd_Matrix.pd_4  
+         + Activity.May * Pd_Matrix.pd_5 + Activity.Jun * Pd_Matrix.pd_6  
+         + Activity.Jul * Pd_Matrix.pd_7 + Activity.Aug * Pd_Matrix.pd_8  
+         + Activity.Sep * Pd_Matrix.pd_9 + Activity.Oct * Pd_Matrix.pd_10  
+         + Activity.Nov * Pd_Matrix.pd_11 + Activity.Dec * Pd_Matrix.pd_12  
          ), 0)) As Budget  
   
-FROM Activity, Pd\_Matrix  
+FROM Activity, Pd_Matrix  
   
-WHERE Pd\_Type = 'month'  
+WHERE Pd_Type = 'month'  
   
 GROUP BY  
        Activity.AcctID  
      , Activity.DeptID  
-     , Pd\_Matrix.Pd\_Name  
+     , Pd_Matrix.Pd_Name  
      , Activity.Year
 ```
 
@@ -194,42 +187,41 @@ SELECT
 
        Activity.AcctID  
      , Activity.DeptID  
-     , Pd\_Matrix.Pd\_Name  
+     , Pd_Matrix.Pd_Name  
      , Activity.Year  
       
      ,Sum( CASE Activity.Class  
          WHEN "Actual"THEN  
-         (Activity.Jan \* Pd\_Matrix.pd\_1 + Activity.Feb \* Pd\_Matrix.pd\_2  
-         + Activity.Mar \* Pd\_Matrix.pd\_3 + Activity.Apr \* Pd\_Matrix.pd\_4  
-         + Activity.May \* Pd\_Matrix.pd\_5 + Activity.Jun \* Pd\_Matrix.pd\_6  
-         + Activity.Jul \* Pd\_Matrix.pd\_7 + Activity.Aug \* Pd\_Matrix.pd\_8  
-         + Activity.Sep \* Pd\_Matrix.pd\_9 + Activity.Oct \* Pd\_Matrix.pd\_10  
-         + Activity.Nov \* Pd\_Matrix.pd\_11 + Activity.Dec \* Pd\_Matrix.pd\_12  
+         (Activity.Jan * Pd_Matrix.pd_1 + Activity.Feb * Pd_Matrix.pd_2  
+         + Activity.Mar * Pd_Matrix.pd_3 + Activity.Apr * Pd_Matrix.pd_4  
+         + Activity.May * Pd_Matrix.pd_5 + Activity.Jun * Pd_Matrix.pd_6  
+         + Activity.Jul * Pd_Matrix.pd_7 + Activity.Aug * Pd_Matrix.pd_8  
+         + Activity.Sep * Pd_Matrix.pd_9 + Activity.Oct * Pd_Matrix.pd_10  
+         + Activity.Nov * Pd_Matrix.pd_11 + Activity.Dec * Pd_Matrix.pd_12  
          ) ELSE 0 END) Actual  
   
      ,Sum( CASE Activity.Class  
          WHEN "Budget"THEN  
-         (Activity.Jan \* Pd\_Matrix.pd\_1 + Activity.Feb \* Pd\_Matrix.pd\_2  
-         + Activity.Mar \* Pd\_Matrix.pd\_3 + Activity.Apr \* Pd\_Matrix.pd\_4  
-         + Activity.May \* Pd\_Matrix.pd\_5 + Activity.Jun \* Pd\_Matrix.pd\_6  
-         + Activity.Jul \* Pd\_Matrix.pd\_7 + Activity.Aug \* Pd\_Matrix.pd\_8  
-         + Activity.Sep \* Pd\_Matrix.pd\_9 + Activity.Oct \* Pd\_Matrix.pd\_10  
-         + Activity.Nov \* Pd\_Matrix.pd\_11 + Activity.Dec \* Pd\_Matrix.pd\_12  
+         (Activity.Jan * Pd_Matrix.pd_1 + Activity.Feb * Pd_Matrix.pd_2  
+         + Activity.Mar * Pd_Matrix.pd_3 + Activity.Apr * Pd_Matrix.pd_4  
+         + Activity.May * Pd_Matrix.pd_5 + Activity.Jun * Pd_Matrix.pd_6  
+         + Activity.Jul * Pd_Matrix.pd_7 + Activity.Aug * Pd_Matrix.pd_8  
+         + Activity.Sep * Pd_Matrix.pd_9 + Activity.Oct * Pd_Matrix.pd_10  
+         + Activity.Nov * Pd_Matrix.pd_11 + Activity.Dec * Pd_Matrix.pd_12  
          ) ELSE 0 END) Budget  
   
-FROM Activity, Pd\_Matrix  
+FROM Activity, Pd_Matrix  
   
-WHERE Pd\_Type = 'month'  
+WHERE Pd_Type = 'month'  
    
 GROUP BY  
      Activity.AcctID  
      , Activity.DeptID  
    
-     , Pd\_Matrix.Pd\_Name  
+     , Pd_Matrix.Pd_Name  
      , Activity.Year  
-```   
+```
 
-Summary
--------
+## Summary
 
 The Period Matrix table is a versatile tool for SQL development. It can be used in all DBMSs with little modification to the SQL statements. It can be used to replace several separate SQL statements needed to create the different formulas and it is useful in table folding and pivoting.
