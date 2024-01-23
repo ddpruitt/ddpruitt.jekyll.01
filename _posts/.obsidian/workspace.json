@@ -4,18 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "7bb6db41d291ad77",
+        "id": "d7c3bf7386a4ad0c",
         "type": "tabs",
         "children": [
           {
-            "id": "a2675a5ce6775921",
+            "id": "a67c70b9fd51bcf1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2006-12-30-i-am-iron-man.md",
-                "mode": "preview",
-                "source": true
+                "file": "2004-01-30-period-matirx-twisting.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2006-12-30-i-am-iron-man.md",
+                "file": "2004-01-30-period-matirx-twisting.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2006-12-30-i-am-iron-man.md",
+                "file": "2004-01-30-period-matirx-twisting.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2006-12-30-i-am-iron-man.md"
+                "file": "2004-01-30-period-matirx-twisting.md"
               }
             }
           }
@@ -146,10 +146,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a2675a5ce6775921",
+  "active": "a67c70b9fd51bcf1",
   "lastOpenFiles": [
-    "2006-12-28-windows-xp-running-in-kvm-on-fedora-core-6.md",
     "2006-12-30-i-am-iron-man.md",
+    "2006-12-28-windows-xp-running-in-kvm-on-fedora-core-6.md",
     "2007-01-11-no-wait-i-am-dr-doom.md",
     "2012-03-26-c-spirograph-point-generators.md",
     "2008-01-05-need-tape.md",
