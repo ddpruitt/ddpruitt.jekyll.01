@@ -11,4 +11,4 @@ Respectful - Of your parents
 
 Resourceful - Think for yourself
 
-Responsable - Be a man, take the blame
+Responsible - Be a man, take the blame

@@ -15,14 +15,16 @@ Create your configuration as such:
   
 Then call your code as such:  
   
-\[csharp\]  
+```csharp  
 public static DataSet GetWorksheet()  
 {  
-string sql = "SELECT \* FROM \[Sheet1$\]";  
-string connectionName = "Book1";  
-  
-return DatabaseFactory.CreateDatabase(connectionName)  
-.ExecuteDataSet(CommandType.Text, sql);  
+    string sql = "SELECT * FROM [Sheet1$]";  
+    string connectionName = "Book1";  
+    
+    return DatabaseFactory
+        .CreateDatabase(connectionName)  
+        .ExecuteDataSet(CommandType.Text, sql);  
 }  
-\[/csharp\]  
+```
+
 And that is that. One DataSet ready to go.

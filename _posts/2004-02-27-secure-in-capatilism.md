@@ -11,7 +11,7 @@ I know that no socialistic form of government will ever last very long.  I know
 
 How do I know this?  Because of the Coffee Leaches!
 
-We have a pretty nice coffee bar in our office.  We have fresh beans, good quaility beans, and a grinder.  One of the people I work with could be considered a Coffee Snob, but he is a super nice guy.  He has no problem going out of his way to help out others.  And he loves coffee.  He is the one behind the coffee bar and the reason it is so top notch.
+We have a pretty nice coffee bar in our office.  We have fresh beans, good quality beans, and a grinder.  One of the people I work with could be considered a Coffee Snob, but he is a super nice guy.  He has no problem going out of his way to help out others.  And he loves coffee.  He is the one behind the coffee bar and the reason it is so top notch.
 
 But we also have Coffee Leaches.  The ones who always leave just enough coffee in the bottom of the pot so they can, in their little minds, justify not making the next pot.  They do not contribute to the effort to make the coffee or in any other way support it.
 

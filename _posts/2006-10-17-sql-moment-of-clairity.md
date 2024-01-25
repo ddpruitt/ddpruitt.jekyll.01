@@ -12,15 +12,10 @@ I was working on a stored procedure the other day, not one that I wrote original
 An inspection of the execution plan showed that one part of the procedure was doing an index scan and that it was this that was taking up over 85% of the execution time. I was totally baffled, it was hitting the index so why wasn’t it faster?  
   
 Then I learned three things all at once:  
-
   
 *   Implicit Conversion
-  
 *   non-sargable kills performance
-  
 *   Index Seek is preferred of Index Scan
-  
-
   
 **Implicit Conversion**  
   

@@ -11,4 +11,4 @@ I have been saying for the last couple of years that once we get true TV on dema
 
   
 
-The thing I just found out about YouTube is that you can embed videos in any post and not worry about actaully hosting the video.  See my post on the [Blue Man Group](http://blog.ddpruitt.net/2006/08/18/blue-man-group-rocks/) for an example.
+The thing I just found out about YouTube is that you can embed videos in any post and not worry about actually hosting the video.  See my post on the [Blue Man Group](http://blog.ddpruitt.net/2006/08/18/blue-man-group-rocks/) for an example.

@@ -11,24 +11,19 @@ I am working on automating our build process and one of the things I am trying t
 
 I tried the first method with no success.  For some reason I couldn't get the output file name to be recognized by the executable.  I eventually had to switch to the <fxcop> task but I had to set a system envitonment variable to the executable first.  It eventually looked like this:
 
-```
+```xml
 <target
       name="analyze.fxcop" description="Runs FxCop on build output">  
-  
       <setenv name="PATH" value="${tools.dir}\\fxcop;%PATH%" />  
-  
       <mkdir dir="${build.dir}\\\\fxcop" />  
-  
  <fxcop
       directOutputToConsole="false" analysisReportFilename="${build.dir}\\\\fxcop\\\\fxcop.xml"
       failonerror="false">  
- <targets>  
- <include
-      name="${build.dir}\\\\release\\\\bin\\\\\*.dll" />  
-      </targets>  
- <dependencyDirectories refid="referenceComponents"
-      />  
-      </fxcop>  
+     <targets>  
+          <include name="${build.dir}\\\\release\\\\bin\\\\\*.dll" />  
+     </targets>  
+     <dependencyDirectories refid="referenceComponents"/>  
+</fxcop>  
   
 </target>
 ```  

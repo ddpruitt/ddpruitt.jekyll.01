@@ -8,9 +8,9 @@ tags:
 - General
 ---
 
-Christopher Diggins list the three things he’s leanred in 20 years of programming:
+Christopher Diggins list the three things he’s learned in 20 years of programming:
 
-_1\. Your code will change_
+_1. Your code will change_
 
 _2.  No matter how simple you think your code is, it is complete nonsense to almost everyone else._
 

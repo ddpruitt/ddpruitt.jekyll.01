@@ -7,7 +7,7 @@ tags:
 - Rant
 ---
 
-So says my bossman at least.  And such is the attiutude of a lot of programmers.
+So says my bossman at least.  And such is the attitude of a lot of programmers.
 
 But it is not All That Matters.  It is a side affect of doing things right and an accident when you do things wrong.  There is more to building software, lots more, and it is unfortunate that some people will never see beyond the short sided goals of "Making it Work."
 

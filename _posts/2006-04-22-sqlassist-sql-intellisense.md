@@ -14,4 +14,4 @@ tags:
 > 
 > _Edit, test, and run scripts just like you do in SQL Server Management Studio. Use SQL pretty formatting, user configurable code templates, and many shortcuts all designed to enhance your SQL coding experience and reduce development time._
 
-This has got to be one of the coolest add-ins to Visual Studio I have found in a long time!  With this I can maybe finally convience every developer I work with that Visual Studio is a better tool for database development than Enterprise Manager.
+This has got to be one of the coolest add-ins to Visual Studio I have found in a long time!  With this I can maybe finally convince every developer I work with that Visual Studio is a better tool for database development than Enterprise Manager.
