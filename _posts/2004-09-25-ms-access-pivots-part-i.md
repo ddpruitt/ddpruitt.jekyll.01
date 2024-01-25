@@ -7,8 +7,6 @@ tags:
 - SQL Origami
 ---
 
-## CrossTab Queries
-
 CrossTab queries are an easy way in MS Access to pivot tables. They are limited in that you can only pivot on one field and can only aggregate one field.
 
   
