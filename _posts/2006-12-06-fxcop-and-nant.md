@@ -13,15 +13,17 @@ I tried the first method with no success.  For some reason I couldn't get the o
 
 ```xml
 <target
-      name="analyze.fxcop" description="Runs FxCop on build output">  
-      <setenv name="PATH" value="${tools.dir}\\fxcop;%PATH%" />  
-      <mkdir dir="${build.dir}\\\\fxcop" />  
- <fxcop
-      directOutputToConsole="false" analysisReportFilename="${build.dir}\\\\fxcop\\\\fxcop.xml"
-      failonerror="false">  
-     <targets>  
-          <include name="${build.dir}\\\\release\\\\bin\\\\\*.dll" />  
-     </targets>  
+     name="analyze.fxcop" 
+     description="Runs FxCop on build output">  
+     <setenv name="PATH" value="${tools.dir}\fxcop;%PATH%" />  
+     <mkdir dir="${build.dir}\fxcop" />  
+     <fxcop
+          directOutputToConsole="false" 
+          analysisReportFilename="${build.dir}\fxcop\fxcop.xml"
+          failonerror="false">  
+          <targets>  
+               <include name="${build.dir}\release\bin\*.dll" />  
+          </targets>  
      <dependencyDirectories refid="referenceComponents"/>  
 </fxcop>  
   

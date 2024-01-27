@@ -10,20 +10,18 @@ tags:
 I have two tables in a typed DataSet and I want to compare one column in each table to see if TableA has values that are not in TableB.  
   
 
-```
-IEnumerable<string\> valuesInA =
+```csharp
+IEnumerable<string> valuesInA =
       typedDataSet.TableA.AsEnumerable().Select(row => row.AField);
-``````
-IEnumerable<string\> valuesInB = typedDataSet.TableB.AsEnumerable().Select(row
+
+IEnumerable<string> valuesInB = typedDataSet.TableB.AsEnumerable().Select(row
       => row.BField);
 ```
 
-```
+```csharp
 foreach (var notInB in valuesInA.Except(valuesInB))
-``````
-    Debug.WriteLine(string.Format("Value
-      not in TableB.BField: {0}", notInB));
-```
 
+    Debug.WriteLine(string.Format("Value not in TableB.BField: {0}", notInB));
+```
   
 This is assuming that both AField and BField are the same type.

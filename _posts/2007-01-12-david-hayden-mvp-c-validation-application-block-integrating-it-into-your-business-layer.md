@@ -11,7 +11,7 @@ tags:
 > Now that we have this cool Validation Application Block we want to use it with all our business objects. This should immediately send up a red flag that there will probably be some common functionality among all these business objects in how they use the Validation Application Block. Hence some type of layer supertype ( business base class ) will probably be necessary to contain common functionality to remove code redundancy.
 
   
-Source: [David Hayden \[MVP C#\] : Validation Application Block - Integrating It Into Your Business Layer](http://codebetter.com/blogs/david.hayden/archive/2006/12/28/Validation-Application-Block-_2D00_-Integrating-It-Into-Your-Business-Layer.aspx)  
+Source: [David Hayden, MVP C# : Validation Application Block - Integrating It Into Your Business Layer](http://codebetter.com/blogs/david.hayden/archive/2006/12/28/Validation-Application-Block-_2D00_-Integrating-It-Into-Your-Business-Layer.aspx)  
   
 David Hayden presents another great article, this time on the newest addition to the MS EntLib: _Validation Application Block_.  
   

@@ -10,6 +10,6 @@ tags:
 
 > Ok, what kind of ass-hat idiotic thing is this?
 
-Source: [\[GIT PATCH\] more Driver core patches for 2.6.19](http://thread.gmane.org/gmane.linux.kernel/475654/focus=475824)
+Source: [GIT PATCH more Driver core patches for 2.6.19](http://thread.gmane.org/gmane.linux.kernel/475654/focus=475824)
 
 That has got to be one of the funniest things I've read in a long time.  Well, at least in the last 24 hrs.

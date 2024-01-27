@@ -9,13 +9,10 @@ tags:
 
 > Top four reasons Windows wins and Linux loses
 > 
-> 1\. The Installed Base
-> 
-> 2\. PC Vendor Support
-> 
-> 3\. Hardware Vendor Support
-> 
-> 4\. Software Support
+> 1. The Installed Base
+> 2. PC Vendor Support
+> 3. Hardware Vendor Support
+> 4. Software Support
 
 Source: [Top four reasons Windows wins and Linux loses](http://desktoplinux.com/news/NS6087894103.html)
 

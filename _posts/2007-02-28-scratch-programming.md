@@ -20,13 +20,13 @@ What I wound up doing was create an MSI using NSIS that would create the folder 
   
 ; HM NIS Edit Wizard helper defines  
 !define
-      PRODUCT\_NAME "Scratch Template"  
-!define PRODUCT\_VERSION "1.0"  
+      PRODUCT_NAME "Scratch Template"  
+!define PRODUCT_VERSION "1.0"  
 !define
-      PRODUCT\_PUBLISHER "HomeNet"  
-!define PRODUCT\_WEB\_SITE
+      PRODUCT_PUBLISHER "HomeNet"  
+!define PRODUCT_WEB_SITE
       "http://blog.ddpruitt.net"  
-;!define PRODUCT\_DIR\_REGKEY
+;!define PRODUCT_DIR_REGKEY
       "SoftwareMicrosoftWindowsCurrentVersionApp PathsMbUnit.Cons.exe"  
   
 ; MUI
@@ -35,42 +35,42 @@ What I wound up doing was create an MSI using NSIS that would create the folder 
   
 ; MUI
       Settings  
-!define MUI\_ABORTWARNING  
-!define MUI\_ICON
-      "${NSISDIR}\\Contrib\\Graphics\\Icons\\modern-install.ico"  
+!define MUI_ABORTWARNING  
+!define MUI_ICON
+      "${NSISDIR}\Contrib\Graphics\Icons\modern-install.ico"  
   
 ; Welcome
       page  
-!insertmacro MUI\_PAGE\_WELCOME  
+!insertmacro MUI_PAGE_WELCOME  
 ; License page  
 ;!insertmacro
-      MUI\_PAGE\_LICENSE "............\\path\\to\\licence\\Your\\SoftwareLicence.txt"  
+      MUI_PAGE_LICENSE "............\path\to\licence\Your\SoftwareLicence.txt"  
 ;
       Components page  
-!insertmacro MUI\_PAGE\_COMPONENTS  
+!insertmacro MUI_PAGE_COMPONENTS  
 ; Directory
       page  
-!insertmacro MUI\_PAGE\_DIRECTORY  
+!insertmacro MUI_PAGE_DIRECTORY  
 ; Instfiles
       page  
-!insertmacro MUI\_PAGE\_INSTFILES  
+!insertmacro MUI_PAGE_INSTFILES  
 ; Finish page  
 !insertmacro
-      MUI\_PAGE\_FINISH  
+      MUI_PAGE_FINISH  
   
 ; Language files  
-!insertmacro MUI\_LANGUAGE
+!insertmacro MUI_LANGUAGE
       "English"  
   
 ; MUI end ------  
   
-Name "${PRODUCT\_NAME}
-      ${PRODUCT\_VERSION}"  
+Name "${PRODUCT_NAME}
+      ${PRODUCT_VERSION}"  
 OutFile "ScratchSetup.exe"  
 InstallDir
       "$DOCUMENTSVisual Studio 2005ProjectsScratchNewSolution"  
 ;InstallDirRegKey HKLM
-      "${PRODUCT\_DIR\_REGKEY}" ""  
+      "${PRODUCT_DIR_REGKEY}" ""  
 ShowInstDetails show  
   
 Section
@@ -88,10 +88,10 @@ SectionEnd
   
 Section "MbUnit"
       SEC02  
-SetOutPath "$INSTDIR\\lib\\MbUnit"  
+SetOutPath "$INSTDIR\lib\MbUnit"  
 SetOverwrite try  
 File
-      "\\lib\\MbUnit\\MbUnit.Framework.dll"  
+      "\lib\MbUnit\MbUnit.Framework.dll"  
 .  
 .  
 .  
@@ -99,16 +99,16 @@ SectionEnd
   
 Section
       "Log4Net" SEC03  
-SetOutPath "$INSTDIR\\lib\\log4net"  
+SetOutPath "$INSTDIR\lib\log4net"  
 File
-      "\\lib\\log4net\\log4net.dll"  
+      "\lib\log4net\log4net.dll"  
 SectionEnd  
   
 Section "Enterprise
       Library (June 2006)" SEC04  
-SetOutPath "$INSTDIR\\lib\\EntLib.2006.01"  
+SetOutPath "$INSTDIR\lib\EntLib.2006.01"  
 File
-      "\\lib\\EnterpriseLibrary.2006.01\\EntLibConfig.exe"  
+      "\lib\EnterpriseLibrary.2006.01\EntLibConfig.exe"  
 .  
 .  
 .  
@@ -116,21 +116,21 @@ SectionEnd
   
 ;Section
       -Post  
-; WriteRegStr HKLM "${PRODUCT\_DIR\_REGKEY}" ""
-      "$INSTDIR\\lib\\MbUnit\\MbUnit.Cons.exe"  
+; WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" ""
+      "$INSTDIR\lib\MbUnit\MbUnit.Cons.exe"  
 ;SectionEnd  
   
 ; Section
       descriptions  
-!insertmacro MUI\_FUNCTION\_DESCRIPTION\_BEGIN  
+!insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN  
 !insertmacro
-      MUI\_DESCRIPTION\_TEXT ${SEC01} ""  
-!insertmacro MUI\_DESCRIPTION\_TEXT ${SEC02}
+      MUI_DESCRIPTION_TEXT ${SEC01} ""  
+!insertmacro MUI_DESCRIPTION_TEXT ${SEC02}
       ""  
-!insertmacro MUI\_DESCRIPTION\_TEXT ${SEC03} ""  
+!insertmacro MUI_DESCRIPTION_TEXT ${SEC03} ""  
 !insertmacro
-      MUI\_DESCRIPTION\_TEXT ${SEC04} ""  
+      MUI_DESCRIPTION_TEXT ${SEC04} ""  
 !insertmacro
-      MUI\_FUNCTION\_DESCRIPTION\_END
+      MUI_FUNCTION_DESCRIPTION_END
 ```  
 Add the appropriate files to the Sections, compile and your ready.

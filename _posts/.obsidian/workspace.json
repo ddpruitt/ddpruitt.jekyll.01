@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2007-01-11-no-wait-i-am-dr-doom.md",
+                "file": "2009-03-27-linq-to-sql-roundtrips-sql-trace.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2007-01-11-no-wait-i-am-dr-doom.md",
+                "file": "2009-03-27-linq-to-sql-roundtrips-sql-trace.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2007-01-11-no-wait-i-am-dr-doom.md",
+                "file": "2009-03-27-linq-to-sql-roundtrips-sql-trace.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2007-01-11-no-wait-i-am-dr-doom.md"
+                "file": "2009-03-27-linq-to-sql-roundtrips-sql-trace.md"
               }
             }
           }
@@ -148,31 +148,31 @@
   },
   "active": "a67c70b9fd51bcf1",
   "lastOpenFiles": [
-    "2006-12-30-i-am-iron-man.md",
-    "2006-10-17-sql-moment-of-clairity.md",
-    "2005-07-20-o-39-reilly-network-weblogs-everything-i-know-about-programming.md",
-    "2004-09-25-period-matrix.md",
-    "2004-09-25-ms-access-pivots-part-ii.md",
-    "2004-09-25-ms-access-pivots-part-i.md",
-    "2004-01-30-period-matirx-twisting.md",
-    "2006-12-28-windows-xp-running-in-kvm-on-fedora-core-6.md",
-    "2007-01-11-no-wait-i-am-dr-doom.md",
-    "2012-03-26-c-spirograph-point-generators.md",
+    "2009-03-13-datatable-finding-differences-in-column-values.md",
+    "2009-02-25-dataset-more-reasons-to-not-like-it.md",
+    "2009-01-28-using-idataerrorinfo-for-validation.md",
+    "2009-01-09-y2k38.md",
+    "2008-05-13-changing-typed-dataset-connection-string-comments.md",
+    "2008-05-13-changing-typed-dataset-connection-string.md",
+    "2008-02-09-datasets-love-em-hate-em.md",
+    "2008-02-05-value-objects-as-measurement-objects.md",
+    "2008-02-04-measurement-objects.md",
+    "2008-01-30-databases-suck.md",
     "2008-01-05-need-tape.md",
-    "2006-10-22-windows-live-writer.md",
-    "2006-10-07-ralf-39-s-sudelb-cher-net-naked-see-these-hitherto-unpublished-pictures-of-the-net-framework-architecture.md",
-    "2006-09-30-cisco-vpn-sucks.md",
-    "2006-09-10-5-tb-server.md",
-    "2006-09-08-g-dingtv-viewing-linux-in-a-whole-new-way.md",
-    "2006-09-07-outlook-rules-blackberry-sucks.md",
-    "2006-09-01-aggragator-sites.md",
-    "2006-08-31-building-a-build-server-with-ccnet.md",
-    "2006-08-28-hanselminutes-not-franklinminutes.md",
-    "2006-08-26-coding-horror-source-control-anything-but-sourcesafe.md",
-    "2006-08-21-programming-with-interfaces.md",
-    "2006-08-19-youtube-the-future-of-tv.md",
-    "2006-08-18-blue-man-group-rocks.md",
-    "2006-08-17-gallery-upgrade.md",
-    "2006-08-16-moving-blogs-aspnet-vs-php-and-wordpress.md"
+    "2007-10-19-excelpackage.md",
+    "2007-10-10-entlib-data-access-block-and-excel.md",
+    "2007-10-10-crappy-apps.md",
+    "2007-06-16-cuecat-vs-the-usb-keyboard.md",
+    "2007-06-07-chevy-vega-vs-testdrivennet.md",
+    "2007-05-14-back-to-coderush.md",
+    "2007-03-31-learning-typemocknet.md",
+    "2007-02-28-scratch-programming.md",
+    "2007-01-24-the-pruitt-39-s.md",
+    "2007-01-20-worm-hole-to-the-universe.md",
+    "2007-01-12-david-hayden-mvp-c-validation-application-block-integrating-it-into-your-business-layer.md",
+    "2007-01-11-no-wait-i-am-dr-doom.md",
+    "2007-01-05-top-four-reasons-windows-wins-and-linux-loses.md",
+    "2006-12-30-i-am-iron-man.md",
+    "2006-12-28-windows-xp-running-in-kvm-on-fedora-core-6.md"
   ]
 }

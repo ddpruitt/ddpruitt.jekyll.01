@@ -13,7 +13,7 @@ The app itself is used to import a bunch of CSV files into the Access database. 
   
 The command line version was all hand controlled. I had to go in and update configuration files to point to the CSV files and the MDB database. That got old fast so I decided to make a GUI version that would allow me to pick the MDB file and each of the CSV files to import. Picking and using the CSV files was easy, it was changing the connection string for the MDB that proved to be the hardest.  
   
-I am using strongly typed datasets in VS2005. If you have ever worked with them you find out soon that the connection string gets saved with the project in the app.config file, even if it is a seperate DAL dll project. My guess is that Microsoft assumed that if you ever had a connection to one database then your strongly typed dataset would not have to change to another database, but if you did you could always just update the configuration file.  
+I am using strongly typed datasets in VS2005. If you have ever worked with them you find out soon that the connection string gets saved with the project in the app.config file, even if it is a separate DAL dll project. My guess is that Microsoft assumed that if you ever had a connection to one database then your strongly typed dataset would not have to change to another database, but if you did you could always just update the configuration file.  
   
 As my drill instructor was always fond of saying: "Wrong f\*\*\*ing answer!"  
   
@@ -33,58 +33,35 @@ Also the Settings class is internal and sealed, which means it cannot be accesse
   
   
 
-```
- 1 using
-      DC.Catalog.DAL.Properties;
-``````
- 2 
-``````
- 3 namespace DC.Catalog.DAL
-``````
- 4 {
-``````
- 5 public static classEquipmentConnectionSettings
-``````
- 6 {
-``````
- 7 public static void
-      SetEquipmentToConnectToMdb(string
-      MdbFilename)
-``````
- 8 {
-``````
- 9 // This only overrides
-      the in-memory copy of the setting. It is not perminate.
-``````
- 10
-      Settings.Default\["EquipmentConnectionString"\] = string.Format(
-``````
- 11 Settings.Default.EquipmentConnectionStringTemplate
-``````
- 12 ,
-      MdbFilename);
-``````
- 13 }
-``````
- 14 }
-``````
- 15 }
+```csharp
+using DC.Catalog.DAL.Properties;
+namespace DC.Catalog.DAL
+{
+      public static class EquipmentConnectionSettings
+      {
+            public static void SetEquipmentToConnectToMdb(string MdbFilename)
+            {
+                  // This only overrides the in-memory copy of the setting. 
+                  // It is not permanent.
+                  Settings.Default["EquipmentConnectionString"] = string.Format(
+                        Settings.Default.EquipmentConnectionStringTemplate
+                        , MdbFilename);
+            }
+      }
+}
 ```
 
-  
 Notice that to update the setting value I had to use:  
-  
 
-```
-Settings.Default\["EquipmentConnectionString"\]
+```csharp
+Settings.Default["EquipmentConnectionString"]
 ```
 
   
 Since the setting Settings.Default.EquipmentConnectionString is readonly I had to use the other way to access the value. The EquipmentConnectionStringTemplate is simple:  
-  
-\>
 
+```
 Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0}  
+```
 
-  
 Every time I change the Access file I am pointing at I call the SetEquipmentToConnectToMdb() method, magic happens in the Typed DataSet and it all just works.
