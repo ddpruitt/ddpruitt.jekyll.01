@@ -16,36 +16,35 @@ The trickiest part was getting the tree to load the data correctly. I used the *
   
 Notice how I am using **this.getUserTreeStoreStore()** and **this.getSettingTreeStoreStore()**. Yes, I had to use "StoreStore" because I named my stores UserTreeStore and SettingTreeStore, then the Controller tacks on the second "Store" when it creates the get function.  
   
-\[javascript highlight="12,14,15,23,24"\]  
+```javascript  
 Ext.define('GraftedTreeApp.controller.TreePanelController', {  
-extend: 'Ext.app.Controller',  
+      extend: 'Ext.app.Controller',  
+      
+      models: [  
+            'UserModel'  
+      ],  
+      stores: [  
+            'SettingTreeStore',  
+            'UserTreeStore'  
+      ],  
+      
+      onLaunch: function() {    
+            var userStore = this.getUserTreeStoreStore();  
+            userStore.setRootNode({  
+            text: 'Users',  
+            leaf: false,  
+            expanded: false  
+      });  
+      
+      // Graft our userTreeStore into the settingsTreeStore. Note that the call  
+      // to .expand() is what triggers the userTreeStore to load its data.  
+      var settingsTreeStore = this.getSettingTreeStoreStore();  
+      settingsTreeStore.getRootNode().appendChild(userStore.getRootNode()).expand();  
+      }  
   
-models: \[  
-'UserModel'  
-\],  
-stores: \[  
-'SettingTreeStore',  
-'UserTreeStore'  
-\],  
-  
-onLaunch: function() {  
-  
-var userStore = this.getUserTreeStoreStore();  
-userStore.setRootNode({  
-text: 'Users',  
-leaf: false,  
-expanded: false  
 });  
   
-// Graft our userTreeStore into the settingsTreeStore. Note that the call  
-// to .expand() is what triggers the userTreeStore to load its data.  
-var settingsTreeStore = this.getSettingTreeStoreStore();  
-settingsTreeStore.getRootNode().appendChild(userStore.getRootNode()).expand();  
-}  
-  
-});  
-  
-\[/javascript\]  
+```  
   
 Pretty much everything else was setting properties in the Sencha Architect UI. The project files are [here](http://techshorts.ddpruitt.net/wp-content/uploads/2012/05/graftedTree.zip).  
   

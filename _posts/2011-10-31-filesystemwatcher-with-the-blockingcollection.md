@@ -12,7 +12,7 @@ While working with the FileSystemWatcher I found that if too many files were cre
 On StackOverflow I found [Making PLINQ and BlockingCollection work together](http://stackoverflow.com/questions/7533067/making-plinq-and-blockingcollection-work-together "Making PLINQ and
       BlockingCollection work together").  I'm not so interested in the PLINQ issue but this is a great example of using The BlockingCollection with FileSystemWatcher.  
   
-\[csharp\]  
+```csharp
 using System;  
 using System.Collections.Concurrent;  
 using System.Collections.Generic;  
@@ -24,9 +24,9 @@ namespace ConsoleApplication4
 {  
     public class Program  
     {  
-        private const string Folder = "C:\\\\Temp\\\\InputData";  
+        private const string Folder = "C:TempInputData";  
   
-        static void Main(string\[\] args) {  
+        static void Main(string[] args) {  
   
             var cts = new CancellationTokenSource();  
             foreach (var obj in Input(cts.Token))  
@@ -65,4 +65,4 @@ namespace ConsoleApplication4
         }  
     }  
 }  
-\[/csharp\]
+```

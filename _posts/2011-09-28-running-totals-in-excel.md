@@ -19,27 +19,36 @@ A running total is when you have a list of Values and you want to total of the c
   
 The key to getting the SUM() correct is getting the Range correct.  For a given Range of Values, start with the First number and SUM() until you get to the current row.  You can do this by using the OFFSET() function and taking advantage of Excel's table features to get the column range.  
   
-\[vb\] OFFSET ( cell reference, rows, columns, \[ height \], \[ width \] ) \[/vb\]  
+
+```
+OFFSET ( cell reference, rows, columns, [ height ], [ width ] )
+```  
   
 In the above case the Running Total column's formula becomes:  
   
-\[vb\] =SUM( OFFSET( \[Values\], 0, 0, ROW() - ROW(\[Values\]) + 1, 1 ) ) \[/vb\]  
+```
+=SUM( OFFSET( [Values], 0, 0, ROW() - ROW([Values]) + 1, 1 ) ) 
+```  
   
-\[Values\] is the Column we want the running total for.  
+[Values] is the Column we want the running total for.  
   
-rows = 0 and columns = 0 because we want to start at the very first cell of \[Values\]  
+rows = 0 and columns = 0 because we want to start at the very first cell of [Values]  
   
-\[width\] = 1 because we want only the \[Values\] column  
+[width] = 1 because we want only the [Values] column  
   
-\[height\] = ROW() - ROW(\[Values\]) + 1, this is the magic line.  
+[height] = ROW() - ROW([Values]) + 1, this is the magic line.  
   
-To get the height we have to figure out our current Row number, subtract off the starting Row of \[Values\] then add 1.  ROW(\[Values\]) gives us the starting row of the column and ROW() gives us the current row.  For example, if the Table starts on row 3 (headers are on row 3) then the column \[Values\] starts on row 4.  The height of the very first cell in \[Values\] is:  
+To get the height we have to figure out our current Row number, subtract off the starting Row of [Values] then add 1.  ROW([Values]) gives us the starting row of the column and ROW() gives us the current row.  For example, if the Table starts on row 3 (headers are on row 3) then the column [Values] starts on row 4.  The height of the very first cell in [Values] is:  
   
-\[vb\] ROW() - ROW(\[Values\]) + 1 = 4 - 4 + 1 = 1 \[/vb\]  
+```
+ROW() - ROW([Values]) + 1 = 4 - 4 + 1 = 1
+```  
   
-The height of the 3rd cell in the \[Values\] column is:  
+The height of the 3rd cell in the [Values] column is:  
   
-\[vb\]ROW() - ROW(\[Values\]) + 1 = 6 - 4 + 1 = 3 \[/vb\]  
+```
+ROW() - ROW([Values]) + 1 = 6 - 4 + 1 = 3 
+```
   
 [Offset Function in Excel](http://www.navigatorpf.com/tutorials/offset-function-excel)  
   

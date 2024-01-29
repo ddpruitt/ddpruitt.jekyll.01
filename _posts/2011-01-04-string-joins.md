@@ -13,19 +13,21 @@ I say: **Stop Doing That!**
   
 Use the string.Join().  
   
-\[csharp\]  
+```csharp 
   
-var strings = new\[\] { "Darren", "Dawn", "Thomas", "Zoey" };  
+var strings = new[] { "Darren", "Dawn", "Thomas", "Zoey" };  
   
-var results = string.Format("Replace \\"{0}\\" with {1} Question Marks: ({2})",  
+var results = string.Format("Replace "{0}" with {1} Question Marks: ({2})",  
 string.Join(",", strings), strings.Length,  
 string.Join(",", Enumerable.Repeat("?", strings.Length))  
 );  
   
 Console.WriteLine(results);  
   
-\[/csharp\]  
+```  
   
 The resulting output is:  
-  
+
+```  
 `Replace "Darren,Dawn,Thomas,Zoey" with 4 Question Marks: (?,?,?,?)`
+```

@@ -21,8 +21,6 @@ This example creates a static function in C# using Visual Studio. There is docum
     
 *   Post Build Events to help create the final XLL file.  
     
-
-  
   
 **NOTE:** _I hate Post Build Events._ The ONLY exception is in this case where I am modifying the output of the final build. Post Build Events are Evil especially when used in a large development team. A better solutions is to create actual Build Scripts that do what I am about to do. You have been warned.  
   
@@ -45,26 +43,28 @@ del "$(TargetDir)Scratch-ExcelDna-packed.xll"
   
 Then add a Post-build event to recreate it:  
   
-"$(SolutionDir)packages\\Excel-DNA.0.29\\tools\\ExcelDnaPack.exe" "$(TargetDir)Scratch-ExcelDna.dna"  
+"$(SolutionDir)packagesExcel-DNA.0.29toolsExcelDnaPack.exe" "$(TargetDir)Scratch-ExcelDna.dna"  
   
 While you are in the Project Properties messing with the evil build events set the Debug options so you can test your code. Set the External Program to you MS Excel and add a Command Line argument with a path to your final xll file.  
   
 Now, add a class TestFunctions:  
-\[csharp\]  
+
+```csharp  
 using ExcelDna.Integration;  
   
 namespace DC.Scratch.ExcelDna  
 {  
-public class TestFunctions  
-{  
-\[ExcelFunction(Description = "Product of two numbers", Category = "DNA Test")\]  
-public static double TheProductOf(double x, double y)  
-{  
-return x\*y;  
+      public class TestFunctions  
+      {  
+            [ExcelFunction(Description = "Product of two numbers", 
+                           Category = "DNA Test")]  
+            public static double TheProductOf(double x, double y)  
+            {  
+                  return x*y;  
+            }  
+      }  
 }  
-}  
-}  
-\[/csharp\]  
+```  
   
 Hit F5 and see if Excel Starts. If it does, add some numbers to the Excel spreadsheet and see if the TheProduct() function works.  
   
