@@ -11,16 +11,22 @@ tags:
   
 [Asynchronous Programming in C#](http://blogs.msdn.com/b/ericlippert/archive/2010/10/29/asynchronous-programming-in-c-5-0-part-two-whence-await.aspx)  
   
-\[csharp\]public async void AsyncIntroParallel()  
+
+```csharp
+public async void AsyncIntroParallel()  
 {  
-Task<string> page1 = new WebClient().DownloadStringTaskAsync(new Uri("http://www.weather.gov"));  
-Task<string> page2 = new WebClient().DownloadStringTaskAsync(new Uri("http://www.weather.gov/climate/"));  
-Task<string> page3 = new WebClient().DownloadStringTaskAsync(new Uri("http://www.weather.gov/rss/"));  
-  
-WriteLinePageTitle(await page1);  
-WriteLinePageTitle(await page2);  
-WriteLinePageTitle(await page3);  
-}\[/csharp\]  
+    Task<string> page1 = new WebClient()
+                .DownloadStringTaskAsync(new Uri("http://www.weather.gov"));  
+    Task<string> page2 = new WebClient()
+                .DownloadStringTaskAsync(new Uri("http://www.weather.gov/climate/"));  
+    Task<string> page3 = new WebClient()
+                .DownloadStringTaskAsync(new Uri("http://www.weather.gov/rss/"));  
+    
+    WriteLinePageTitle(await page1);  
+    WriteLinePageTitle(await page2);  
+    WriteLinePageTitle(await page3);  
+}
+```  
   
 Async CTP has been released. Note: This is not automatically Multi-Threading! From the CTP:  
 

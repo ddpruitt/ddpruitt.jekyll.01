@@ -9,20 +9,19 @@ tags:
 
 In [Some ways to convert a byte array to Bitmap](http://team.sfi.vn/post/Some-ways-to-convert-a-byte-array-to-Bitmap.aspx "Some ways to convert a byte array to Bitmap") we see how to convert a Bitmap to and from a ByteArray. As an alternative I use the following extension method to convert an image to a ByteArray:  
   
-\[csharp\]  
-  
+```csharp
 using System.Drawing;  
 namespace DC.Core.Extension  
 {  
-public static class ImageExtension  
-{  
-private static ImageConverter \_converter;  
-  
-public static byte\[\] ToByteArray(this Image image)  
-{  
-if (\_converter==null) \_converter = new ImageConverter();  
-return (byte\[\])\_converter.ConvertTo(image, typeof(byte\[\]));  
+    public static class ImageExtension  
+    {  
+        private static ImageConverter _converter;  
+        
+        public static byte[] ToByteArray(this Image image)  
+        {  
+            if (_converter==null) _converter = new ImageConverter();  
+            return (byte[])_converter.ConvertTo(image, typeof(byte[]));  
+        }  
+    }  
 }  
-}  
-}  
-\[/csharp\]
+```

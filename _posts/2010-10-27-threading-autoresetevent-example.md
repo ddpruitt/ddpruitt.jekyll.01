@@ -7,25 +7,35 @@ tags:
 - .Net
 ---
 
-\[csharp\]public class Program  
+```csharp
+public class Program  
 {  
-private static System.Threading.AutoResetEvent stopFlag = new System.Threading.AutoResetEvent(false);  
-public static void Main()  
-{  
-ServiceHost svh = new ServiceHost(typeof(ServiceImplementation));  
-svh.AddServiceEndpoint(  
-typeof(WCFSimple.Contract.IService),  
-new NetTcpBinding(),  
-"net.tcp://localhost:8000");  
-svh.Open();  
-Console.WriteLine("SERVER - Running...");  
-stopFlag.WaitOne();  
-Console.WriteLine("SERVER - Shutting down...");  
-svh.Close();  
-Console.WriteLine("SERVER - Shut down!");  
-}  
-public static void Stop()  
-{  
-stopFlag.Set();  
-}  
-}\[/csharp\]
+    private static System.Threading.AutoResetEvent stopFlag = new System.Threading.AutoResetEvent(false);  
+
+    public static void Main()  
+    {  
+        ServiceHost svh = new ServiceHost(typeof(ServiceImplementation));  
+        svh.AddServiceEndpoint(  
+            typeof(WCFSimple.Contract.IService),  
+            new NetTcpBinding(),  
+            "net.tcp://localhost:8000");  
+
+        svh.Open();  
+
+        Console.WriteLine("SERVER - Running...");  
+
+        stopFlag.WaitOne();  
+
+        Console.WriteLine("SERVER - Shutting down...");  
+
+        svh.Close();  
+
+        Console.WriteLine("SERVER - Shut down!");  
+    }  
+    
+    public static void Stop()  
+    {  
+        stopFlag.Set();  
+    }  
+}
+```

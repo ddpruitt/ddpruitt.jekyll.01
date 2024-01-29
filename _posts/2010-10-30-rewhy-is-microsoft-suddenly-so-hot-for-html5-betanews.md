@@ -8,7 +8,7 @@ tags:
 - General
 ---
 
-Last week, Gartner predicted that mobile would be a trillion-dollar industry by 2014. It\\'s a market Microsoft doesn\\'t want to be shut out of.  
+Last week, Gartner predicted that mobile would be a trillion-dollar industry by 2014. It's a market Microsoft doesn't want to be shut out of.  
   
 via [Why is Microsoft suddenly so hot for HTML5? | Betanews](http://www.betanews.com/joewilcox/article/Why-is-Microsoft-suddenly-so-hot-for-HTML5/1288372263).  
   
